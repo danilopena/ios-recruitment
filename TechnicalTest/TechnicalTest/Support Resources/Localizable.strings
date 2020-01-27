@@ -6,9 +6,10 @@
   Copyright © 2020 Danilo Pena. All rights reserved.
 */
 
-"greetings" = "Olá! Que tal fazer conversões de moedas de forma fácil e rápida?!";
+"title.mainView" = "Olá! Que tal fazer conversões de moedas ";
+"title.boldPart" = "fácil e rapidamente?!";
 "orientationExchangeBase.label" = "Selecione a moeda base/origem";
-"orientationExchangeConverted.label" = "Selecione a moeda destino para conversão";
+"orientationExchangeConverted.label" = "Selecione a moeda destino";
 "error.title" = "Ops!";
 
 "canada.name" = "Canadá";

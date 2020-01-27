@@ -43,82 +43,83 @@ enum Currencies: String {
     case KRW = "KRW"
     case MYR = "MYR"
     case EUR = "EUR"
-    case UNK = ""
+    case UNK = "UNK"
  
     func nameOfCountryOrCity() -> String {
         switch self {
         case .CAD:
-            return Localizable.canada
+            return Localizable.canada.localized
         case .HKD:
-            return Localizable.hongKong
+            return Localizable.hongKong.localized
         case .ISK:
-            return Localizable.iceland
+            return Localizable.iceland.localized
         case .PHP:
-            return Localizable.philippine
+            return Localizable.philippine.localized
         case .DKK:
-            return Localizable.denmark
+            return Localizable.denmark.localized
         case .HUF:
-            return Localizable.hungary
+            return Localizable.hungary.localized
         case .CZK:
-            return Localizable.czechRepublic
+            return Localizable.czechRepublic.localized
         case .AUD:
-            return Localizable.australia
+            return Localizable.australia.localized
         case .RON:
-            return Localizable.romania
+            return Localizable.romania.localized
         case .SEK:
-            return Localizable.sweden
+            return Localizable.sweden.localized
         case .IDR:
-            return Localizable.indonesia
+            return Localizable.indonesia.localized
         case .INR:
-            return Localizable.india
+            return Localizable.india.localized
         case .BRL:
-            return Localizable.brazil
+            return Localizable.brazil.localized
         case .RUB:
-            return Localizable.russia
+            return Localizable.russia.localized
         case .HRK:
-            return Localizable.croatia
+            return Localizable.croatia.localized
         case .JPY:
-            return Localizable.japan
+            return Localizable.japan.localized
         case .THB:
-            return Localizable.thailand
+            return Localizable.thailand.localized
         case .CHF:
-            return Localizable.switzerland
+            return Localizable.switzerland.localized
         case .SGD:
-            return Localizable.singapore
+            return Localizable.singapore.localized
         case .PLN:
-            return Localizable.poland
+            return Localizable.poland.localized
         case .BGN:
-            return Localizable.bulgaria
+            return Localizable.bulgaria.localized
         case .TRY:
-            return Localizable.turkey
+            return Localizable.turkey.localized
         case .CNY:
-            return Localizable.china
+            return Localizable.china.localized
         case .NOK:
-            return Localizable.norway
+            return Localizable.norway.localized
         case .NZD:
-            return Localizable.newzealand
+            return Localizable.newzealand.localized
         case .ZAR:
-            return Localizable.southAfrica
+            return Localizable.southAfrica.localized
         case .USD:
-            return Localizable.eua
+            return Localizable.eua.localized
         case .MXN:
-            return Localizable.mexico
+            return Localizable.mexico.localized
         case .ILS:
-            return Localizable.isarel
+            return Localizable.isarel.localized
         case .GBP:
-            return Localizable.unitedKingdom
+            return Localizable.unitedKingdom.localized
         case .KRW:
-            return Localizable.southKorea
+            return Localizable.southKorea.localized
         case .MYR:
-            return Localizable.malaysia
+            return Localizable.malaysia.localized
         case .EUR:
-            return Localizable.euroZone
+            return Localizable.euroZone.localized
         case .UNK:
-            return Localizable.unknown
+            return Localizable.unknown.localized
         }
     }
     
     func returnCurrencyBasedOnLanguage() {
+            
 //        CAD = en_CA  Canada
 //        HKD = en_HK  Hong Kong
 //        ISK = is_IS  Islândia
@@ -156,6 +157,7 @@ enum Currencies: String {
     }
 }
 
+// MARK: - Localizables
 extension Currencies {
     private enum Localizable {
         static let canada = "canada.name"

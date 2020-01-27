@@ -11,4 +11,5 @@ import UIKit
 final class Cores {
     static let gray  = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     static let blue  = #colorLiteral(red: 0, green: 0.6697896123, blue: 1, alpha: 1)
+    static let black = #colorLiteral(red: 0.07968957228, green: 0.07968957228, blue: 0.07968957228, alpha: 1)
 }

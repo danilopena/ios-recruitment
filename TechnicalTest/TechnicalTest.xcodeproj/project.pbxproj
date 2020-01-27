@@ -10,6 +10,8 @@
 		7145096B23DE51800086B834 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3F76123DB880E00B3A3CD /* MainViewController.swift */; };
 		7145096D23DE589B0086B834 /* ExchangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7145096C23DE589B0086B834 /* ExchangeService.swift */; };
 		7145096F23DE59CD0086B834 /* LatestListOfCurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7145096E23DE59CD0086B834 /* LatestListOfCurrencies.swift */; };
+		7145097123DF19C70086B834 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7145097023DF19C70086B834 /* RoundedButton.swift */; };
+		7145097423DF1D760086B834 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7145097323DF1D760086B834 /* CurrencyCell.swift */; };
 		71E3F75E23DB880E00B3A3CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3F75D23DB880E00B3A3CD /* AppDelegate.swift */; };
 		71E3F76023DB880E00B3A3CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3F75F23DB880E00B3A3CD /* SceneDelegate.swift */; };
 		71E3F76523DB880E00B3A3CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71E3F76323DB880E00B3A3CD /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 /* Begin PBXFileReference section */
 		7145096C23DE589B0086B834 /* ExchangeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeService.swift; sourceTree = "<group>"; };
 		7145096E23DE59CD0086B834 /* LatestListOfCurrencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestListOfCurrencies.swift; sourceTree = "<group>"; };
+		7145097023DF19C70086B834 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		7145097323DF1D760086B834 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		71E3F75A23DB880E00B3A3CD /* TechnicalTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechnicalTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71E3F75D23DB880E00B3A3CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71E3F75F23DB880E00B3A3CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7145097223DF1D470086B834 /* SelectCurrency */ = {
+			isa = PBXGroup;
+			children = (
+				71E3F79B23DE4E0200B3A3CD /* SelectCurrencyViewController.swift */,
+				7145097323DF1D760086B834 /* CurrencyCell.swift */,
+			);
+			path = SelectCurrency;
+			sourceTree = "<group>";
+		};
 		71E3F75123DB880E00B3A3CD = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +186,8 @@
 		71E3F78423DB8D9D00B3A3CD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				71E3F79B23DE4E0200B3A3CD /* SelectCurrencyViewController.swift */,
+				7145097223DF1D470086B834 /* SelectCurrency */,
+				7145097023DF19C70086B834 /* RoundedButton.swift */,
 				71E3F76123DB880E00B3A3CD /* MainViewController.swift */,
 				71E3F76323DB880E00B3A3CD /* Main.storyboard */,
 			);
@@ -318,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7145097423DF1D760086B834 /* CurrencyCell.swift in Sources */,
 				71E3F79323DDDB1E00B3A3CD /* MainViewModel.swift in Sources */,
 				7145096B23DE51800086B834 /* MainViewController.swift in Sources */,
 				71E3F79823DE4C4F00B3A3CD /* Endpoint.swift in Sources */,
@@ -329,6 +344,7 @@
 				71E3F78A23DB8E1500B3A3CD /* UIViewController+Extension.swift in Sources */,
 				7145096D23DE589B0086B834 /* ExchangeService.swift in Sources */,
 				71E3F76023DB880E00B3A3CD /* SceneDelegate.swift in Sources */,
+				7145097123DF19C70086B834 /* RoundedButton.swift in Sources */,
 				71E3F78E23DCFD7800B3A3CD /* Currencies.swift in Sources */,
 				71E3F79623DDDBFA00B3A3CD /* State.swift in Sources */,
 			);
