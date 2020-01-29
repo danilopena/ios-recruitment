@@ -16,7 +16,7 @@ class RoundedButton: UIButton {
         self.layer.borderWidth = 1
             self.layer.borderColor = Cores.blue.cgColor
         self.setTitleColor(Cores.blue, for: .normal)
-        self.titleLabel?.font = UIFont(name: "Futura-Bold", size: 18)
+        self.titleLabel?.font = UIFont(name: Fonts.futuraBold, size: 18)
     }
     
     override func draw(_ rect: CGRect) {
@@ -24,7 +24,7 @@ class RoundedButton: UIButton {
         self.layer.borderWidth = 1
             self.layer.borderColor = Cores.blue.cgColor
         self.setTitleColor(Cores.blue, for: .normal)
-        self.titleLabel?.font = UIFont(name: "Futura-Bold", size: 18)
+        self.titleLabel?.font = UIFont(name: Fonts.futuraBold, size: 18)
     }
     
     override init(frame: CGRect) {

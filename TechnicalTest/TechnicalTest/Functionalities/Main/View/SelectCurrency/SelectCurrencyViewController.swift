@@ -27,6 +27,8 @@ class SelectCurrencyViewController: UIViewController {
     
     var selectCurrencyOptions: (orientation: String, option: UIButton)?
     var delegateMainView: MainViewControllerDelegate!
+    
+    /// Alphabetic ordering.
     var rates: [String]? {
         didSet {
             rates = rates?.sorted { $0 < $1 }

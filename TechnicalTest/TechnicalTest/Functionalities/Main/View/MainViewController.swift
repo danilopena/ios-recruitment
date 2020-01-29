@@ -14,22 +14,22 @@ protocol MainViewControllerDelegate {
 
 class MainViewController: UIViewController {
 
-    //MARK: - IBOutlets and Variables
+    //  MARK: - IBOutlets and Variables
     @IBOutlet weak var titleLabel: UILabel! {
         didSet {
             titleLabel.text = Localizable.titleMainView.localized
         }
     }
-    // Buttons to select currency
+    /// Buttons to select currency
     @IBOutlet weak var baseCurrency: RoundedButton!
     @IBOutlet weak var destinationCurrency: RoundedButton!
     
-    // Value to present/change result of calcs
+    /// Value to present/change result of calcs
     @IBOutlet weak var baseCurrencyValue: UITextField!
         { didSet { baseCurrencyValue.text = "1.0" }}
     @IBOutlet weak var destinationCurrencyValue: UITextField!
     
-    // Orientation labels
+    /// Orientation labels
     @IBOutlet weak var orientationBase: UILabel! {
         didSet {
             orientationBase.text = Localizable.orientationBaseExchange.localized
@@ -40,8 +40,9 @@ class MainViewController: UIViewController {
             orientationDestination.text = Localizable.orientationDestinationExchange.localized
         }
     }
+    @IBOutlet weak var explanation: UILabel!
 
-    // Variables
+    /// Variables
     private var selectCurrencyOptions: (orientation: String, option: UIButton)?
     private var viewModel: MainViewModel!
 
@@ -50,12 +51,16 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
                 
         viewModel = MainViewModel(delegate: self)
+        
+        // Fectching latest without a base, to get base default from API.
         viewModel.fetchLatestExchange()
         
         styleTitleView()
+        addToolbarOnTextFields()
     }
     
-    //MARK: - Actions
+    //  MARK: - Actions
+    /// This method whill performSegue for selecton of currency and select the correct title orientation.
     @IBAction func openSelectionOfCurrency(sender: UIButton) {
         switch sender {
         case baseCurrency:
@@ -71,7 +76,12 @@ class MainViewController: UIViewController {
         performSegue(withIdentifier: Constants.segueToSelectCurrency, sender: self)
     }
     
-    //MARK: - Navigation
+    /// This method will remove keyboard with UIControl on Container View
+    @IBAction func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? SelectCurrencyViewController {
             destination.selectCurrencyOptions = selectCurrencyOptions
@@ -82,51 +92,84 @@ class MainViewController: UIViewController {
 }
 
 private extension MainViewController {
-
+    
     func reloadTextsOfCurrencies() {
         baseCurrency.setTitle(viewModel.baseCurrency, for: .normal)
-        destinationCurrency.setTitle(viewModel.destination ?? Currencies.BRL.rawValue, for: .normal)
+        destinationCurrency.setTitle(viewModel.destination ?? Currencies.BRL.rawValue,
+                                     for: .normal)
     }
     
-    // This method will apply the result of conversion
+    /// This method will apply the result of conversion
     func applyCalcOnView() {
-        if let baseValue = Double(baseCurrencyValue.text ?? "1.0") {
+        if let baseValue = Double(baseCurrencyValue.text ?? "1.0")?.rounded(toPlaces: 2) {
             let result = viewModel.makeCalcOfConversion(valueForBase: baseValue)
-            destinationCurrencyValue.text = "\(result)"
+            destinationCurrencyValue.text = "\(result.rounded(toPlaces: 2))"
         }
     }
     
-    // This method apply style on titleLabel.
+    /// This method will apply the result of conversion
+    func applyReversedCalcOnView() {
+        if let destinationValue = Double(destinationCurrencyValue.text ?? "1.0")?.rounded(toPlaces: 2) {
+            let result = viewModel.makeReversedCalcOfConversion(valueForDestination: destinationValue)
+            baseCurrencyValue.text = "\(result.rounded(toPlaces: 2))"
+        }
+    }
+    
+    /// This method apply style on titleLabel.
     func styleTitleView() {
         let attText = NSMutableAttributedString()
-        attText.append(makeDinamicAttMediumBold(text: Localizable.titleMainView.localized))
-        attText.append(makeDinamicAttStringBold(text: Localizable.titleMainBoldPart.localized))
+        attText.append(makeDinamicAttStringStyled(
+                            text: Localizable.titleMainView.localized,
+                            fontName: Fonts.futuraMedium,
+                            color: Cores.black))
+        
+        attText.append(makeDinamicAttStringStyled(
+                            text: Localizable.titleMainBoldPart.localized,
+                            fontName: Fonts.futuraBold,
+                            color: Cores.blue))
         
         titleLabel.attributedText = attText
     }
     
-    func makeDinamicAttStringBold(text: String) -> NSAttributedString {
-        let paragraph = NSMutableParagraphStyle()
-        paragraph.alignment = .center
-
-        return NSAttributedString.init(string: text
-            , attributes: [
-                NSAttributedString.Key.font : UIFont(name: "Futura-Bold", size: 17) as Any,
-                NSAttributedString.Key.foregroundColor : Cores.blue,
-                NSAttributedString.Key.paragraphStyle : paragraph
-            ])
+    /// This method mount the explanation text.
+    func makeExplain() {
+        guard let baseValue = baseCurrencyValue.text,
+              let base = baseCurrency.titleLabel?.text,
+              let destinationValue = destinationCurrencyValue.text,
+              let destination = destinationCurrency.titleLabel?.text
+        else {
+                return
+        }
+        
+        explanation.text = String(format: "%@ %@ (moeda base/origem) equivale a %@ %@ (moeda destino) e vice versa.", baseValue, base, destinationValue, destination)
     }
     
-    func makeDinamicAttMediumBold(text: String) -> NSAttributedString {
+    /// This method add a toolBar on textFields to improve UX.
+    func addToolbarOnTextFields() {
+        let keyboardDoneButtonView = UIToolbar.init()
+        keyboardDoneButtonView.sizeToFit()
+        let doneButton = UIBarButtonItem.init(
+                            barButtonSystemItem: UIBarButtonItem.SystemItem.done,
+                            target: self,
+                            action: #selector(textFieldShouldEndEditing(_:))
+                         )
+
+        keyboardDoneButtonView.items = [doneButton]
+        baseCurrencyValue.inputAccessoryView = keyboardDoneButtonView
+        destinationCurrencyValue.inputAccessoryView = keyboardDoneButtonView
+    }
+    
+    /// This method mount a NSAttributedString with a font name and the selected color
+    func makeDinamicAttStringStyled(text: String, fontName: String, color: UIColor) -> NSAttributedString {
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
 
-        return NSAttributedString.init(string: text
-            , attributes: [
-                NSAttributedString.Key.font : UIFont(name: "Futura-Medium", size: 17) as Any,
-                NSAttributedString.Key.foregroundColor : Cores.black,
-                NSAttributedString.Key.paragraphStyle : paragraph
-            ])
+        return NSAttributedString.init(string: text,
+                attributes: [
+                    NSAttributedString.Key.font : UIFont(name: fontName, size: 17) as Any,
+                    NSAttributedString.Key.foregroundColor : color,
+                    NSAttributedString.Key.paragraphStyle : paragraph
+                ])
     }
 }
 
@@ -137,6 +180,7 @@ extension MainViewController: MainViewModelDelegate {
             case .success:
                 self.reloadTextsOfCurrencies()
                 self.applyCalcOnView()
+                self.makeExplain()
             case .failed(let error):
                 self.alert(title: Localizable.errorTitle.localized, message: error)
             }
@@ -151,6 +195,19 @@ extension MainViewController: MainViewControllerDelegate {
             viewModel.destination = selectedOption
         }
         viewModel.fetchLatestExchange(baseCurrency.titleLabel?.text)
+    }
+}
+
+extension MainViewController: UITextFieldDelegate {
+    /// This method will atualize calc and values
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if view.selectedTextField == destinationCurrencyValue {
+            applyReversedCalcOnView()
+        } else {
+            applyCalcOnView()
+        }
+        dismissKeyboard()
+        return true
     }
 }
 

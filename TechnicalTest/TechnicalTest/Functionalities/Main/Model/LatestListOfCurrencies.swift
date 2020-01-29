@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LatestListOfCurrencies: Codable {
+struct LatestListOfCurrencies: Codable {
     var rates: [String: Double]?
     var base: String?
     var date: String?

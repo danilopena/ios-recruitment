@@ -117,44 +117,6 @@ enum Currencies: String {
             return Localizable.unknown.localized
         }
     }
-    
-    func returnCurrencyBasedOnLanguage() {
-            
-//        CAD = en_CA  Canada
-//        HKD = en_HK  Hong Kong
-//        ISK = is_IS  Islândia
-//        PHP = en_PH | fil_PH Philipine
-//        DKK = da_DK  Dinamarca
-//        HUF = hu_HU | hu  Hungria
-//        CZK = cs_CZ  República Checa
-//        AUD = en_AU  Australia
-//        RON = ro_RO | ro  Romenia
-//        SEK = fr_CH | de_CH | it_CH | rm_CH Suecia
-//        IDR = id_ID | id Indonésia
-//
-//        INR = bn_IN | bo_IN | ta_IN | te_IN | kn_IN | gu_IN | as_IN | ne_IN | ur_IN | pa_Guru_IN | en_IN | or_IN | kok_IN | hi_IN | ml_IN | mr_IN India
-//
-//        BRL = pt_BR Brasil
-//        RUB = ru_MD | ru | ru_UA | ru_RU Russia
-//        HRK = hr_HR | hr Croacia
-//        JPY = ja | ja_JP Japao
-//        THB = th_TH Tailandia
-//        CHF = gsw_CH | gsw Suíça e Lichenstain
-//        SGD = zh_Hans_SG | en_SG Singapura
-//        PLN = pl_PL Polonia
-//        BGN = bg_BG | bg Bulgaria
-//        TRY = tr_TR | tr Turquia
-//        CNY = zh_Hant_HK | zh_Hans_HK | zh_Hans_CN | bo_CN | zh_Hant_MO | zh_Hans_MO | ii_CN China Popular Republic
-//        NOK = nb_NO | nn_NO Noruega
-//        NZD = en_NZ Nova zelândia
-//        ZAR = af_ZA | en_ZA | zu_ZA Africa do Sul
-//        USD = en_US_POSIX | haw_US | en_US | es_US | chr_US EUA
-//        MXN = es_MX México
-//        ILS = he_IL Israel
-//        GBP = cy_GB | gv_GB | en_GB | kw_GB Reino Unido
-//        KRW = ko_KR | ko Coreia do Sul
-//        MYR = ms_MY | ms Malásia
-    }
 }
 
 // MARK: - Localizables

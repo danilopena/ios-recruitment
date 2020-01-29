@@ -9,6 +9,7 @@
 import NetworkKit
 
 final class ExchangeService <T: Codable>: HTTPClient<T> {
+    
     func fetchLatest(completion: @escaping completion, error: @escaping error) {
         let baseUrl = Endpoint.baseUrl.rawValue
         let url = Endpoint.latestExchange.rawValue

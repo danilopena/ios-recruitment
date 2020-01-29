@@ -40,7 +40,7 @@ open class HTTPClient<T: Codable> {
         
         var dataTask: URLSessionDataTask?
         let defaultSession = URLSession(configuration: .default)
-
+        
         dataTask = defaultSession.dataTask(with: request) { data, response, err in
             
             defer {
